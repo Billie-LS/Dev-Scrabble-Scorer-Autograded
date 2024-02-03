@@ -1,6 +1,4 @@
 // This assignment is inspired by a problem on Exercism (https://exercism.org/tracks/javascript/exercises/etl) that demonstrates Extract-Transform-Load using Scrabble's scoring system. 
-// test it
-
 
 const input = require("readline-sync");
 
@@ -32,15 +30,23 @@ return letterPoints;
 // TODO: your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
+// TODO:  Modify the provided initialPrompt() function to prompt the user to enter a word to score.
+
 function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+   let word = input.question("Let's play some scrabble! Enter a word: ");
+   return word;
+
 };
+
+
 
 let simpleScorer;
 
 let vowelBonusScorer;
 
-let scrabbleScorer;
+// TODO: Use the oldScrabbleScorer() function provided to score the word provided by the user. 
+// Print the result to the console.
+let scrabbleScorer = oldScrabbleScorer;
 
 const scoringAlgorithms = [];
 
