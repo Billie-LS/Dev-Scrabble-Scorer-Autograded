@@ -12,31 +12,35 @@ const oldPointStructure = {
    10: ['Q', 'Z']
 };
 
+
 function oldScrabbleScorer(word) {
-	word = word.toUpperCase();
-	let letterPoints = "";
+   
+   word = word.toUpperCase(); // make case insensitive
+   let letterPoints = "";
 
    // variable to sum up total numeric score
    let totalScore = 0;
 
-
    for (let i = 0; i < word.length; i++) {
-      
-      for (const pointValue in oldPointStructure) {
-         
-         if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
 
-         totalScore += 1;  // Increment the total score
+      // note that the object 'key' is pointValue!
+      for (const pointValue in oldPointStructure) {
+         if (oldPointStructure[pointValue].includes(word[i])) {
+            letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
+            totalScore += parseInt(pointValue); // Increment the total score
+            // totalScore += Number(pointValue); // Increment the total score
+         }
       }
    }
+   // Return object contain letterPoints and totalScore
+   return {
+      letterPoints: letterPoints,
+      totalScore: totalScore
+   };
 }
-// return letterPoints;
-return {
-   letterPoints: letterPoints,
-   totalScore: totalScore
-};
-}
+
+
+
 
 // TODO: your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
@@ -69,7 +73,7 @@ Your job here is to write two other scoring algorithms for the Scrabble player.
 // Each letter within the word is worth 1 point.
 
 function simpleScorer(word){
-	word = word.toUpperCase();
+	word = word.toUpperCase(); // make case insensitive
 	let letterPoints = "";
    // variable to sum up total numeric score
    let totalScore = 0;
@@ -91,10 +95,37 @@ function simpleScorer(word){
 
 // TODO: Define a function that takes a word as a parameter and returns a score. 
 // Each vowel within the word is worth 3 points, and each consonant is worth 1 point.
-function vowelBonusScorer(){
-   
-}
 
+function vowelBonusScorer(word) {
+   word = word.toUpperCase(); // make case insensitive
+   let letterPoints = "";
+
+   // variable to sum up total numeric score
+   let totalScore = 0;
+
+   for (let i = 0; i < word.length; i++) {
+
+      // Check if letter is a vowel (i.e. 'A', 'E','I', 'O', 'U')
+      if ('AEIOU'.includes(word[i])) {
+         // If it's a vowel, add 3 points to the letterPoints and totalScore
+         letterPoints += `Points for '${word[i]}': 3\n`;
+         // Increment numeric total score by 3 points for a vowel
+         totalScore += 3;
+      }
+      // Check if letter not a vowel (i.e. is consonant)
+      if (!'AEIOU'.includes(word[i])) {
+         // If it's not a vowel, add 1 point to the letterPoints and totalScore
+         letterPoints += `Points for '${word[i]}': 1\n`;
+         // Increment the total score by 1 point for a consonant
+         totalScore += 1;
+      }
+   }
+   // return letterPoints;
+   return {
+      letterPoints: letterPoints,
+      totalScore: totalScore
+   };
+}
 
 
 // TODO: Use the oldScrabbleScorer() function provided to score the word provided by the user. 
@@ -102,7 +133,31 @@ function vowelBonusScorer(){
 let scrabbleScorer = oldScrabbleScorer;
 
 
-const scoringAlgorithms = [];
+// TODO: Finish writing the scoringAlgorithms array. 
+// It should be populated with three objects, 
+// one for each of the three scoring options. 
+// Each object should contain three keys: name, description, and scoringFunction
+
+const scoringAlgorithms = [
+   {
+      name: 'Simple Score',
+      description: 'Each letter is worth 1 point.',
+      scoringFunction: simpleScorer
+   }, 
+   {
+      name: 'Bonus Vowels',
+      description: 'Vowels are 3 pts, consonants are 1 pt.',
+      scoringFunction: 'vowelBonusScorer'
+   }, 
+   {
+      name: 'Scrabble',
+      description: 'The traditional scoring algorithm.',
+      scoringFunction: scrabbleScorer
+   }
+];
+
+
+// TODO: scorerPrompt() should return the object the user has selected.
 
 function scorerPrompt() {}
 
