@@ -82,10 +82,11 @@ function simpleScorer(word){
    }
 
    // Return object contain letterPoints and totalScore
-   return {
-      letterPoints: letterPoints,
-      totalScore: totalScore
-   };
+   return totalScore;
+   // return {
+   //    letterPoints: letterPoints,
+   //    totalScore: totalScore
+   // };
 };
 
 
@@ -117,16 +118,48 @@ function vowelBonusScorer(word) {
       }
    }
    // return letterPoints;
-   return {
-      letterPoints: letterPoints,
-      totalScore: totalScore
-   };
+   return totalScore;
+   // return {
+   //    letterPoints: letterPoints,
+   //    totalScore: totalScore
+   // };
 }
 
 
 // TODO: Use the oldScrabbleScorer() function provided to score the word provided by the user. 
 // Print the result to the console.
-let scrabbleScorer = oldScrabbleScorer;
+// let scrabbleScorer = oldScrabbleScorer;
+
+// TODO: Use newPointStructure, to finish writing scrabbleScorer() function
+// replace the oldScrabbleScorer() function in scoringAlgorithms with this new function.
+function scrabbleScorer(word) {
+   
+   word = word.toUpperCase(); // make case insensitive
+   let letterPoints = "";
+
+   // variable to sum up total numeric score
+   let totalScore = 0;
+
+   for (let i = 0; i < word.length; i++) {
+
+      // note that the object 'key' is letter!
+      const letter = word[i];
+
+      // Check if the letter exists in the newPointStructure
+      if (newPointStructure.hasOwnProperty(letter)) {
+         const pointValue = newPointStructure[letter];
+
+         letterPoints += `Points for '${letter}': ${pointValue}\n`;
+
+         totalScore += pointValue; // Increment the total score
+      }
+   }
+   // Return object contain letterPoints and totalScore
+   return {
+      letterPoints: letterPoints,
+      totalScore: totalScore
+   };
+}
 
 
 // TODO: Finish writing the scoringAlgorithms array. 
@@ -180,10 +213,24 @@ function scorerPrompt() {
 }
 
 
+// TASK 3: TRANSFORM SCRABBLE SCORING
+// TODO: function transform takes oldPointStructure to make new point structure //
 
-function transform() {};
+function transform() {
+   const newPointStructure = {}
 
-let newPointStructure;
+   for (const key in oldPointStructure) {
+      const letters = oldPointStructure[key];
+
+      for (const letter of letters) {
+         newPointStructure[letter.toLowerCase()] = parseInt(key);
+      }
+   }
+   return newPointStructure;
+};
+
+// TODO: Locate the newPointStructure object in the starter code and set it equal to transform(oldPointStructure).
+let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
    initialPrompt();
