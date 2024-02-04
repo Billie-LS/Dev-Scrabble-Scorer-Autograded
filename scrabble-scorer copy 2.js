@@ -30,6 +30,10 @@ function oldScrabbleScorer(word) {
             letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
 
             totalScore += parseInt(pointValue); // Increment the total score
+            // totalScore += Number(pointValue); // Increment the total score
+
+            // const points = parseInt(pointValue);  // Convert pointValue to a number
+            // totalScore += points;  // Increment numeric score
          }
       }
    }
@@ -48,10 +52,17 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    let word = input.question("Let's play some scrabble! Enter a word: ");
-   
+
+   // Score input word with oldScrabbleScorer function call
+   // const result = oldScrabbleScorer(word);
+
    // call the selected scorer from the scorerprompt function
    const selectedScorer = scorerPrompt();
    const result = selectedScorer(word);
+   // const result = selectedScorer.scoringFunction(word);
+
+   
+   // console.log(result);
 
    // print scoring output
    console.log(result.letterPoints); // Print letterPoints
@@ -80,6 +91,8 @@ function simpleScorer(word){
       letterPoints += `Points for '${word[i]}': 1\n`;
       totalScore += 1;  // Increment the total score
    }
+   
+   console.log(`Total Score: ${totalScore}`);  // print out total score
 
    // Return object contain letterPoints and totalScore
    return {
@@ -156,26 +169,21 @@ const scoringAlgorithms = [
 // TODO: Finish writing scorerPrompt() so that the user can select which scoring algorithm to use when the program scores their word. 
 // scorerPrompt() should return the object the user has selected.
 // Use the selected algorithm to determine the score for the word:
-// If the user enters 0, have the program output a score using the simple scorer.
-// If the user enters 1, use the vowel bonus scoring function.
-// If the user enters 2, use the Scrabble scoring option.
-// scorerPrompt() should return the object the user has selected.
+/*
+If the user enters 0, have the program output a score using the simple scorer.
+If the user enters 1, use the vowel bonus scoring function.
+If the user enters 2, use the Scrabble scoring option.
+scorerPrompt() should return the object the user has selected.
+*/
 
-// function prompts user to select scoring algorithm
 function scorerPrompt() {
    
    console.log('Which scoring algorithm would you like to use?\n');
-
-   // Iterate each algorithm in scoringAlgorithms array
    for (let i = 0; i < scoringAlgorithms.length; i++){
       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
    }
-   // Prompt user choice (0, 1, or 2) and convert input to integer
    let selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
-
-   // retrieve scoring algo by index = user input choice (0, 1, or 2) 
    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scoringFunction;
-   // Return selected scoring function
    return selectedScorer;
 }
 
