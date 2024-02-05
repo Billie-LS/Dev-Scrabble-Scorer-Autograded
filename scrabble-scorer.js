@@ -17,18 +17,22 @@ const oldPointStructure = {
 function oldScrabbleScorer(word) {
    
    word = word.toUpperCase(); // make case insensitive
-   let letterPoints = "";
 
-   // variable to sum up total numeric score
-   let score = 0;
+   let letterPoints = ""; // empty string store letter points data
+   let score = 0; // variable to sum up total numeric score
 
+   // iterate over each letter in word
    for (let i = 0; i < word.length; i++) {
 
+      // iterate over each key in oldPointStructure object
       // note that the object 'key' is pointValue!
       for (const pointValue in oldPointStructure) {
+         // Check current letter is in the array with the current pointValue (i.e. key)
          if (oldPointStructure[pointValue].includes(word[i])) {
+            // temp literal match the letter with the key, pointValue
             letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
 
+            // increment score adding current pointValue (parsed as integer)
             score += parseInt(pointValue); // Increment the total score
          }
       }
