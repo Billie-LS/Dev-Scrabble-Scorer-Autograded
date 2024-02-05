@@ -80,10 +80,6 @@ function simpleScorer(word){
 
    // returns a numerical 'score', i.e. integer value
    return score;
-   // return {
-   //    letterPoints: letterPoints,
-   //    totalScore: totalScore
-   // };
 };
 
 
@@ -116,10 +112,6 @@ function vowelBonusScorer(word) {
    }
    // returns a numerical 'score', i.e. integer value
    return score;
-   // return {
-   //    letterPoints: letterPoints,
-   //    totalScore: totalScore
-   // };
 }
 
 
