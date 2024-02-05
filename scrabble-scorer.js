@@ -15,7 +15,6 @@ const oldPointStructure = {
 
 
 function oldScrabbleScorer(word) {
-   
    word = word.toUpperCase(); // make case insensitive
 
    let letterPoints = ""; // empty string store letter points data
@@ -69,7 +68,7 @@ TASK 2: ADD AND ORGANIZE SCORING ALGORITHMS
 Your job here is to write two other scoring algorithms for the Scrabble player.
 */
 
-// TODO: Define a function that takes a word as a parameter and returns a numerical score. 
+// TODO: Define a function 'simpleScorer' that takes a word as a parameter and returns a numerical score. 
 // Each letter within the word is worth 1 point.
 
 function simpleScorer(word){
@@ -89,31 +88,32 @@ function simpleScorer(word){
 };
 
 
-// TODO: Define a function that takes a word as a parameter and returns a score. 
+// TODO: Define a function 'vowelBonusScorer' that takes a word as a parameter and returns a score. 
 // Each vowel within the word is worth 3 points, and each consonant is worth 1 point.
 
 function vowelBonusScorer(word) {
    word = word.toUpperCase(); // make case insensitive
-   let letterPoints = "";
 
-   // variable to sum up total numeric score
-   let score = 0;
+	let letterPoints = ""; // empty string store letter points data
+   let score = 0;// variable to sum up total numeric score
 
+   // iterate over each letter in word
    for (let i = 0; i < word.length; i++) {
 
       // Check if letter is a vowel (i.e. 'A', 'E','I', 'O', 'U')
       if ('AEIOU'.includes(word[i])) {
+
          // If IS a vowel, add 3 points to the letterPoints and totalScore
          letterPoints += `Points for '${word[i]}': 3\n`;
-         // Increment numeric total score by 3 points for a vowel
-         score += 3;
+         
+         score += 3;  // Increment the total score
       }
       // If letter NOT a vowel (i.e. is consonant)
       if (!'AEIOU'.includes(word[i])) {
          // If it's not a vowel, add 1 point to the letterPoints and totalScore
          letterPoints += `Points for '${word[i]}': 1\n`;
-         // Increment the total score by 1 point for a consonant
-         score += 1;
+
+         score += 1;  // Increment the total score
       }
    }
    // returns a numerical 'score', i.e. integer value
