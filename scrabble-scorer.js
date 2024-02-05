@@ -128,25 +128,26 @@ function vowelBonusScorer(word) {
 // TODO: Use newPointStructure, to finish writing scrabbleScorer() function
 // replace the oldScrabbleScorer() function in scoringAlgorithms with this new function.
 function scrabbleScorer(word) {
-   
-   word = word.toLowerCase(); // make case insensitive
-   let letterPoints = "";
+   word = word.toLowerCase(); // make case insensitive - to LOWER case to match transformer
 
-   // variable to sum up total numeric score
-   let score = 0;
+   let letterPoints = ""; // empty string store letter points data
+   let score = 0;// variable to sum up total numeric score
 
+   // iterate over each letter in word
    for (let i = 0; i < word.length; i++) {
 
-      // note that the object 'key' is letter!
+      // retrieve current letter
       const letter = word[i];
 
-      // Check if the letter exists in the newPointStructure
+      // check if letter exists in newPointStructure
       if (newPointStructure.hasOwnProperty(letter)) {
+         // retrieve point value for the letter
          const pointValue = newPointStructure[letter];
 
+         // temp literal match the letter with pointValue
          letterPoints += `Points for '${letter}': ${pointValue}\n`;
 
-         score += pointValue; // Increment the total score
+         score += pointValue;  // Increment the total score
       }
    }
    /// returns a numerical 'score', i.e. integer value
