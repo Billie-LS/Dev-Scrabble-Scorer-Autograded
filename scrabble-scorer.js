@@ -188,7 +188,7 @@ const scoringAlgorithms = [
 //  - user enters 0, scorerPrompt returns the simple scorer.
 //  - user enters 1, scorerPrompt returns the vowel bonus scorer.
 //  - user enters 2, scorerPrompt returns the Scrabble scorer.
-// EXCEPTION HANDLING: if user enters <0 or > 2 indicates
+// TODO: EXCEPTION HANDLING if user enters NaN or <0 or > 2 indicates
 // using 'DIW' syntax do{ if(){}}while();
 //  - indicates invalid response
 //  - re-prompts until valid response input
@@ -220,31 +220,6 @@ function scorerPrompt() {
    // return scoring function
    return selectedScorer;
 }
-
-// // TODO: Finish writing scorerPrompt() so that the user can select which scoring algorithm to use when the program scores their word. 
-// // scorerPrompt() should return the object the user has selected.
-// // Use the selected algorithm to determine the score for the word:
-// // If the user enters 0, have the program output a score using the simple scorer.
-// // If the user enters 1, use the vowel bonus scoring function.
-// // If the user enters 2, use the Scrabble scoring option.
-// // scorerPrompt() should return the object the user has selected.
-   
-//    console.log('Which scoring algorithm would you like to use?\n');
-
-//    // Iterate each algorithm in scoringAlgorithms array
-//    for (let i = 0; i < scoringAlgorithms.length; i++){
-//       // template literal prints out name and description of algorithm
-//       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
-//    }
-//    // Prompt user choice (0, 1, or 2) and convert input to integer
-//    let selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
-
-//    // retrieve scoring algo by index = user input choice (0, 1, or 2) 
-//    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scorerFunction;
-//    // Return selected scoring function
-//    return selectedScorer;
-// }
-
 
 // TASK 3: TRANSFORM SCRABBLE SCORING
 // TODO: function transform takes oldPointStructure to make new point structure //
