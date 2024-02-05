@@ -1,4 +1,4 @@
-// This assignment is inspired by a problem on Exercism (https://exercism.org/tracks/javascript/exercises/etl) that demonstrates Extract-Transform-Load using Scrabble's scoring system. 
+// This assignment is inspired by a problem on Exorcism (https://exercism.org/tracks/javascript/exercises/etl) that demonstrates Extract-Transform-Load using Scrabble's scoring system. 
 
 const input = require("readline-sync");
 
@@ -190,24 +190,58 @@ const scoringAlgorithms = [
 // If the user enters 2, use the Scrabble scoring option.
 // scorerPrompt() should return the object the user has selected.
 
-// function prompts user to select scoring algorithm
 function scorerPrompt() {
-   
    console.log('Which scoring algorithm would you like to use?\n');
-
-   // Iterate each algorithm in scoringAlgorithms array
+   
+   // Iterate over each algorithm in scoringAlgorithms array
    for (let i = 0; i < scoringAlgorithms.length; i++){
-      // template literal prints out name and description of algorithm
       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
    }
-   // Prompt user choice (0, 1, or 2) and convert input to integer
-   let selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
-
-   // retrieve scoring algo by index = user input choice (0, 1, or 2) 
+   
+   let selectedAlgorithm;
+   
+   // Keep prompting until the user enters a valid choice (0, 1, or 2)
+   do {
+      
+      // Prompt user choice (0, 1, or 2) and convert input to an integer
+      
+      selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
+      
+      // Check if the entered choice is invalid
+      if (isNaN(selectedAlgorithm) || selectedAlgorithm < 0 || selectedAlgorithm >= scoringAlgorithms.length) {
+         console.log('Invalid choice. Please enter 0, 1, or 2.');
+      }
+   } while (isNaN(selectedAlgorithm) || selectedAlgorithm < 0 || selectedAlgorithm >= scoringAlgorithms.length);
+   
+   // Retrieve the scoring function based on the user's choice
    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scorerFunction;
-   // Return selected scoring function
+   
+   // Return the selected scoring function
    return selectedScorer;
 }
+
+
+
+
+
+// function prompts user to select scoring algorithm
+// function scorerPrompt() {
+   
+//    console.log('Which scoring algorithm would you like to use?\n');
+
+//    // Iterate each algorithm in scoringAlgorithms array
+//    for (let i = 0; i < scoringAlgorithms.length; i++){
+//       // template literal prints out name and description of algorithm
+//       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
+//    }
+//    // Prompt user choice (0, 1, or 2) and convert input to integer
+//    let selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
+
+//    // retrieve scoring algo by index = user input choice (0, 1, or 2) 
+//    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scorerFunction;
+//    // Return selected scoring function
+//    return selectedScorer;
+// }
 
 
 // TASK 3: TRANSFORM SCRABBLE SCORING
