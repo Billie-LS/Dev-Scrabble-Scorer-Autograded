@@ -28,7 +28,7 @@ function scorerPrompt() {
     return selectedScorer;
 }
 
-
+// yml workflow added
 // function scrabbleScorer(){
     
 //     word = word.toUpperCase(); // make case insensitive
