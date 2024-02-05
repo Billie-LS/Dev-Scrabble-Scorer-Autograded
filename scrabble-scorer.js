@@ -63,6 +63,7 @@ function initialPrompt() {
 
 };
 
+
 /*
 TASK 2: ADD AND ORGANIZE SCORING ALGORITHMS
 Your job here is to write two other scoring algorithms for the Scrabble player.
@@ -221,6 +222,7 @@ function scorerPrompt() {
    return selectedScorer;
 }
 
+
 // TASK 3: TRANSFORM SCRABBLE SCORING
 // TODO: function transform takes oldPointStructure to make new point structure //
 
@@ -241,6 +243,7 @@ function transform() {
    // return the new point structure
    return newPointStructure;
 };
+
 
 // TODO: Locate the newPointStructure object in the starter code and set it equal to transform(oldPointStructure).
 let newPointStructure = transform(oldPointStructure);
