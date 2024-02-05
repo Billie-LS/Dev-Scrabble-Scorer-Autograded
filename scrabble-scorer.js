@@ -20,7 +20,7 @@ function oldScrabbleScorer(word) {
    let letterPoints = "";
 
    // variable to sum up total numeric score
-   let totalScore = 0;
+   let score = 0;
 
    for (let i = 0; i < word.length; i++) {
 
@@ -29,15 +29,12 @@ function oldScrabbleScorer(word) {
          if (oldPointStructure[pointValue].includes(word[i])) {
             letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
 
-            totalScore += parseInt(pointValue); // Increment the total score
+            score += parseInt(pointValue); // Increment the total score
          }
       }
    }
-   // Return object contain letterPoints and totalScore
-   return {
-      letterPoints: letterPoints,
-      totalScore: totalScore
-   };
+   // returns a numerical 'score', i.e. integer value
+   return score;
 }
 
 
@@ -56,7 +53,7 @@ function initialPrompt() {
    // print scoring output
    console.log(result.letterPoints); // Print letterPoints
    
-   console.log(`Total Score: ${result.totalScore}`);// Print totalScore
+   console.log(`Total Score: ${result}`);// Print totalScore
 
    return result;
 
@@ -74,15 +71,15 @@ function simpleScorer(word){
 	word = word.toUpperCase(); // make case insensitive
 	let letterPoints = "";
    // variable to sum up total numeric score
-   let totalScore = 0;
+   let score = 0;
 
    for (let i = 0; i < word.length; i++) {
       letterPoints += `Points for '${word[i]}': 1\n`;
-      totalScore += 1;  // Increment the total score
+      score += 1;  // Increment the total score
    }
 
-   // Return object contain letterPoints and totalScore
-   return totalScore;
+   // returns a numerical 'score', i.e. integer value
+   return score;
    // return {
    //    letterPoints: letterPoints,
    //    totalScore: totalScore
@@ -98,7 +95,7 @@ function vowelBonusScorer(word) {
    let letterPoints = "";
 
    // variable to sum up total numeric score
-   let totalScore = 0;
+   let score = 0;
 
    for (let i = 0; i < word.length; i++) {
 
@@ -107,18 +104,18 @@ function vowelBonusScorer(word) {
          // If IS a vowel, add 3 points to the letterPoints and totalScore
          letterPoints += `Points for '${word[i]}': 3\n`;
          // Increment numeric total score by 3 points for a vowel
-         totalScore += 3;
+         score += 3;
       }
       // If letter NOT a vowel (i.e. is consonant)
       if (!'AEIOU'.includes(word[i])) {
          // If it's not a vowel, add 1 point to the letterPoints and totalScore
          letterPoints += `Points for '${word[i]}': 1\n`;
          // Increment the total score by 1 point for a consonant
-         totalScore += 1;
+         score += 1;
       }
    }
-   // return letterPoints;
-   return totalScore;
+   // returns a numerical 'score', i.e. integer value
+   return score;
    // return {
    //    letterPoints: letterPoints,
    //    totalScore: totalScore
@@ -138,7 +135,7 @@ function scrabbleScorer(word) {
    let letterPoints = "";
 
    // variable to sum up total numeric score
-   let totalScore = 0;
+   let score = 0;
 
    for (let i = 0; i < word.length; i++) {
 
@@ -151,14 +148,11 @@ function scrabbleScorer(word) {
 
          letterPoints += `Points for '${letter}': ${pointValue}\n`;
 
-         totalScore += pointValue; // Increment the total score
+         score += pointValue; // Increment the total score
       }
    }
-   // Return object contain letterPoints and totalScore
-   return {
-      letterPoints: letterPoints,
-      totalScore: totalScore
-   };
+   /// returns a numerical 'score', i.e. integer value
+   return score;
 }
 
 
