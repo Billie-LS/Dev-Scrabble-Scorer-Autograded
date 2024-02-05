@@ -193,30 +193,28 @@ const scoringAlgorithms = [
 function scorerPrompt() {
    console.log('Which scoring algorithm would you like to use?\n');
    
-   // Iterate over each algorithm in scoringAlgorithms array
+   // iterate each algorithm of scoringAlgorithms array
    for (let i = 0; i < scoringAlgorithms.length; i++){
       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
    }
    
    let selectedAlgorithm;
    
-   // Keep prompting until the user enters a valid choice (0, 1, or 2)
+   // continue prompt until valid choice (0, 1, or 2) is input
    do {
-      
-      // Prompt user choice (0, 1, or 2) and convert input to an integer
-      
+      // readline-sync prompt input (0, 1, or 2) convert input str to integer
       selectedAlgorithm = parseInt(input.question('Enter 0, 1, or 2: '));
       
-      // Check if the entered choice is invalid
+      // check choice validity
       if (isNaN(selectedAlgorithm) || selectedAlgorithm < 0 || selectedAlgorithm >= scoringAlgorithms.length) {
          console.log('Invalid choice. Please enter 0, 1, or 2.');
       }
    } while (isNaN(selectedAlgorithm) || selectedAlgorithm < 0 || selectedAlgorithm >= scoringAlgorithms.length);
    
-   // Retrieve the scoring function based on the user's choice
+   // retrieve scoring function with input choice
    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scorerFunction;
    
-   // Return the selected scoring function
+   // return scoring function
    return selectedScorer;
 }
 
