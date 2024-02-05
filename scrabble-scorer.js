@@ -189,7 +189,7 @@ const scoringAlgorithms = [
 //  - user enters 1, scorerPrompt returns the vowel bonus scorer.
 //  - user enters 2, scorerPrompt returns the Scrabble scorer.
 // EXCEPTION HANDLING: if user enters <0 or > 2 indicates
-//  using syntax do{ if(){}}while();
+// using 'DIW' syntax do{ if(){}}while();
 //  - indicates invalid response
 //  - re-prompts until valid response input
 
@@ -214,7 +214,7 @@ function scorerPrompt() {
       }
    } while (isNaN(selectedAlgorithm) || selectedAlgorithm < 0 || selectedAlgorithm >= scoringAlgorithms.length);
    
-   // retrieve scoring function with input choice
+   // retrieve scoring function with valid input choice
    const selectedScorer = scoringAlgorithms[selectedAlgorithm].scorerFunction;
    
    // return scoring function
