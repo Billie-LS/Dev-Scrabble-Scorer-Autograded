@@ -197,6 +197,7 @@ function scorerPrompt() {
 
    // Iterate each algorithm in scoringAlgorithms array
    for (let i = 0; i < scoringAlgorithms.length; i++){
+      // template literal prints out name and description of algorithm
       console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
    }
    // Prompt user choice (0, 1, or 2) and convert input to integer
@@ -213,15 +214,20 @@ function scorerPrompt() {
 // TODO: function transform takes oldPointStructure to make new point structure //
 
 function transform() {
-   const newPointStructure = {}
+   const newPointStructure = {}  // empty object for new point structure
 
+   // iterate each key (i.e. point values) in the old point structure
    for (const key in oldPointStructure) {
+      // retrieve array of letters for current key/point value
       const letters = oldPointStructure[key];
 
+      // iterate over each letter in the array
       for (const letter of letters) {
+         // assign point value (integer) to lowercase letter in new point structure
          newPointStructure[letter.toLowerCase()] = parseInt(key);
       }
    }
+   // return the new point structure
    return newPointStructure;
 };
 
