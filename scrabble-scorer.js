@@ -51,7 +51,6 @@ function initialPrompt() {
    const result = selectedScorer(word);
 
    // print scoring output
-   console.log(result.letterPoints); // Print letterPoints
    
    console.log(`Total Score: ${result}`);// Print totalScore
 
@@ -123,7 +122,7 @@ function vowelBonusScorer(word) {
 // replace the oldScrabbleScorer() function in scoringAlgorithms with this new function.
 function scrabbleScorer(word) {
    
-   word = word.toUpperCase(); // make case insensitive
+   word = word.toLowerCase(); // make case insensitive
    let letterPoints = "";
 
    // variable to sum up total numeric score
