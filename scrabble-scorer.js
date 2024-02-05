@@ -74,15 +74,16 @@ Your job here is to write two other scoring algorithms for the Scrabble player.
 
 function simpleScorer(word){
 	word = word.toUpperCase(); // make case insensitive
-	let letterPoints = "";
-   // variable to sum up total numeric score
-   let score = 0;
 
+	let letterPoints = ""; // empty string store letter points data
+   let score = 0;// variable to sum up total numeric score
+
+   // iterate over each letter in word
    for (let i = 0; i < word.length; i++) {
+      // temp literal match the letter with the 1 point
       letterPoints += `Points for '${word[i]}': 1\n`;
       score += 1;  // Increment the total score
    }
-
    // returns a numerical 'score', i.e. integer value
    return score;
 };
