@@ -221,10 +221,6 @@ function scorerPrompt() {
    return selectedScorer;
 }
 
-
-
-
-
 // function prompts user to select scoring algorithm
 // function scorerPrompt() {
    
