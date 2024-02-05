@@ -48,16 +48,18 @@ function oldScrabbleScorer(word) {
 // TODO:  Modify the provided initialPrompt() function to prompt the user to enter a word to score.
 
 function initialPrompt() {
+   // initialize word to readline-sync prompt for a word to play Scrabble
    let word = input.question("Let's play some scrabble! Enter a word: ");
    
-   // call the selected scorer from the scorerprompt function
+   // scorerPrompt function call for choice of scorer
    const selectedScorer = scorerPrompt();
+   // selected scorer calculates score for input word
    const result = selectedScorer(word);
 
-   // print scoring output
-   
+   // template literal output numeric score to console
    console.log(`Total Score: ${result}`);// Print totalScore
 
+   // return result
    return result;
 
 };
