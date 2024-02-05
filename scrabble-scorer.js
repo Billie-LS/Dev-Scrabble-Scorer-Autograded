@@ -183,12 +183,15 @@ const scoringAlgorithms = [
 
 
 // TODO: Finish writing scorerPrompt() so that the user can select which scoring algorithm to use when the program scores their word. 
-// scorerPrompt() should return the object the user has selected.
-// Use the selected algorithm to determine the score for the word:
-// If the user enters 0, have the program output a score using the simple scorer.
-// If the user enters 1, use the vowel bonus scoring function.
-// If the user enters 2, use the Scrabble scoring option.
-// scorerPrompt() should return the object the user has selected.
+// function prompts user to select scoring algorithm
+// scorerPrompt() retrieves user selected object (i.e. an element in the algorithms array).
+//  - user enters 0, scorerPrompt returns the simple scorer.
+//  - user enters 1, scorerPrompt returns the vowel bonus scorer.
+//  - user enters 2, scorerPrompt returns the Scrabble scorer.
+// EXCEPTION HANDLING: if user enters <0 or > 2 indicates
+//  using syntax do{ if(){}}while();
+//  - indicates invalid response
+//  - re-prompts until valid response input
 
 function scorerPrompt() {
    console.log('Which scoring algorithm would you like to use?\n');
