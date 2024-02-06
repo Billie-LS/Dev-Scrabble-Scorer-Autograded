@@ -64,7 +64,6 @@ function initialPrompt() {
 
 };
 
-
 /*
 TASK 2: ADD AND ORGANIZE SCORING ALGORITHMS
 Your job here is to write two other scoring algorithms for the Scrabble player.
