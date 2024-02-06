@@ -1,4 +1,3 @@
-// last functional = copy 3
 // This assignment is inspired by a problem on Exorcism (https://exercism.org/tracks/javascript/exercises/etl) that demonstrates Extract-Transform-Load using Scrabble's scoring system. 
 
 const input = require("readline-sync");
@@ -162,26 +161,26 @@ function scrabbleScorer(word) {
 // one for each of the three scoring options. 
 // Each object should contain three keys: name, description, and scoringFunction
 
-const simpleScorerAlgorithm = {
-   name: 'Simple Score',
-   description: 'Each letter is worth 1 point.',
-   scorerFunction: simpleScorer
-}
-
-const vowelBonusScorerAlgorithm = {
-   name: 'Bonus Vowels',
-   description: 'Vowels are 3 pts, consonants are 1 pt.',
-   scorerFunction: vowelBonusScorer
-}
-
-const scrabbleScorerAlgorithm = {
-   name: 'Scrabble',
-   description: 'The traditional scoring algorithm.',
-   scorerFunction: scrabbleScorer
-}
-
-
-const scoringAlgorithms = [simpleScorerAlgorithm, vowelBonusScorerAlgorithm, scrabbleScorerAlgorithm];
+const scoringAlgorithms = [
+   {
+      name: 'Simple Score',
+      description: 'Each letter is worth 1 point.',
+      scorerFunction: simpleScorer
+      // scoringFunction: simpleScorer
+   }, 
+   {
+      name: 'Bonus Vowels',
+      description: 'Vowels are 3 pts, consonants are 1 pt.',
+      scorerFunction: vowelBonusScorer
+      // scoringFunction: vowelBonusScorer
+   }, 
+   {
+      name: 'Scrabble',
+      description: 'The traditional scoring algorithm.',
+      scorerFunction: scrabbleScorer
+      // scoringFunction: scrabbleScorer
+   }
+];
 
 
 // TODO: Finish writing scorerPrompt() so that the user can select which scoring algorithm to use when the program scores their word. 
