@@ -235,12 +235,13 @@ function scorerPrompt() {
    }
    
    // Get the user's input and validate it
-   // call function checkValidity parameter readline-sync prompt input (0, 1, or 2)
-   const validchoice = checkValidity(input.question('Enter 0, 1, or 2: ')); // returns integer choice
+   const validchoice = checkValidity(input.question('Enter 0, 1, or 2: ')); // call checkValidity parameter readline-sync prompt input (0, 1, or 2)
+   // returns integer choice
 
    // Retrieve the selected scoring function
-   // call function retrieveAlgorithm parameter validchoice
-   const selectedScorer = retrieveAlgorithm(validchoice); // returns selected scoring function
+   
+   const selectedScorer = retrieveAlgorithm(validchoice); // call retrieveAlgorithm() parameter validchoice
+   // returns selected scoringFunction
    
    // Return the selected scoring function
    return selectedScorer;
