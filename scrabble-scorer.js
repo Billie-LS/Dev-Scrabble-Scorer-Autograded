@@ -88,6 +88,8 @@ function simpleScorer(word){
    return score;
 };
 
+// MARK GENIUS!!!! consider for simplescorer just use word.length for score!!!
+
 
 // TODO: Define a function 'vowelBonusScorer' that takes a word as a parameter and returns a score. 
 // Each vowel within the word is worth 3 points, and each consonant is worth 1 point.
@@ -120,6 +122,7 @@ function vowelBonusScorer(word) {
    // returns a numerical 'score', i.e. integer value
    return score;
 }
+// consider switch if AEIOU 3 point otherwise just 1point
 
 
 // TODO: Use the oldScrabbleScorer() function provided to score the word provided by the user. 
@@ -179,7 +182,6 @@ const scrabbleScorerAlgorithm = {
    scorerFunction: scrabbleScorer
 }
 
-
 const scoringAlgorithms = [simpleScorerAlgorithm, vowelBonusScorerAlgorithm, scrabbleScorerAlgorithm];
 
 
@@ -221,8 +223,6 @@ const scoringAlgorithms = [simpleScorerAlgorithm, vowelBonusScorerAlgorithm, scr
 //    // return scoring function
 //    return selectedScorer;
 // }
-
-
 
 
 // Function to prompt the user to select a scoring algorithm
@@ -273,13 +273,6 @@ function retrieveAlgorithm(validchoice) {
 
    return scoringFunction;
 }
-
-
-
-
-
-
-
 
 
 // TASK 3: TRANSFORM SCRABBLE SCORING
