@@ -131,32 +131,50 @@ function vowelBonusScorer(word) {
 
 // TODO: Use newPointStructure, to finish writing scrabbleScorer() function
 // replace the oldScrabbleScorer() function in scoringAlgorithms with this new function.
+// function scrabbleScorer(word) {
+//    word = word.toLowerCase(); // make case insensitive - to LOWER case to match transformer
+
+//    let letterPoints = ""; // empty string store letter points data
+//    let score = 0;// variable to sum up total numeric score
+
+//    // iterate over each letter in word
+//    for (let i = 0; i < word.length; i++) {
+
+//       // retrieve current letter
+//       const letter = word[i];
+
+//       // check if letter exists in newPointStructure
+//       if (newPointStructure.hasOwnProperty(letter)) {
+//          // retrieve point value for the letter
+//          const pointValue = newPointStructure[letter];
+
+//          // temp literal match the letter with pointValue
+//          letterPoints += `Points for '${letter}': ${pointValue}\n`;
+
+//          score += pointValue;  // Increment the total score
+//       }
+//    }
+//    // returns a numerical 'score', i.e. integer value
+//    return score;
+// }
+
 function scrabbleScorer(word) {
-   word = word.toLowerCase(); // make case insensitive - to LOWER case to match transformer
+   // make case insensitive - to LOWER case to match transformer
+   word = word.toLowerCase();
 
-   let letterPoints = ""; // empty string store letter points data
-   let score = 0;// variable to sum up total numeric score
+   let score = 0; // variable to sum up total numeric score
 
-   // iterate over each letter in word
-   for (let i = 0; i < word.length; i++) {
-
-      // retrieve current letter
-      const letter = word[i];
-
-      // check if letter exists in newPointStructure
-      if (newPointStructure.hasOwnProperty(letter)) {
-         // retrieve point value for the letter
-         const pointValue = newPointStructure[letter];
-
-         // temp literal match the letter with pointValue
-         letterPoints += `Points for '${letter}': ${pointValue}\n`;
-
-         score += pointValue;  // Increment the total score
-      }
+   // Iterate each letter in word with for...of loop
+   for (let letter of word) {
+      // Retrieve point value of letter from newPointStructure and add to score
+      score += newPointStructure[letter];
    }
-   /// returns a numerical 'score', i.e. integer value
+   // returns a numerical 'score', i.e. integer value
    return score;
 }
+
+
+
 
 
 // TODO: Finish writing the scoringAlgorithms array. 
