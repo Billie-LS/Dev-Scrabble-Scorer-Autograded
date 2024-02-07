@@ -166,15 +166,13 @@ function scrabbleScorer(word) {
 
    // Iterate each letter in word with for...of loop
    for (let letter of word) {
+
       // Retrieve point value of letter from newPointStructure and add to score
       score += newPointStructure[letter];
    }
    // returns a numerical 'score', i.e. integer value
    return score;
 }
-
-
-
 
 
 // TODO: Finish writing the scoringAlgorithms array. 
