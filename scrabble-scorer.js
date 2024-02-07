@@ -47,22 +47,49 @@ function oldScrabbleScorer(word) {
 
 // TODO:  Modify the provided initialPrompt() function to prompt the user to enter a word to score.
 
-function initialPrompt() {
-   // initialize word to readline-sync prompt for a word to play Scrabble
-   let word = input.question("Let's play some scrabble! Enter a word: ");
+// function initialPrompt() {
+//    // initialize word to readline-sync prompt for a word to play Scrabble
+//    let word = input.question("Let's play some scrabble! Enter a word: ");
    
-   // scorerPrompt function call for choice of scorer
+//    // scorerPrompt function call for choice of scorer
+//    const selectedScorer = scorerPrompt();
+//    // selected scorer calculates score for input word
+//    const result = selectedScorer(word);
+
+//    // template literal output numeric score to console
+//    console.log(`Total Score: ${result}`);// Print totalScore
+
+//    // return result
+//    return result;
+
+// };
+
+
+function initialPrompt() {
+   let word = validateWord(input.question("Let's play some scrabble! Enter a word: "));
    const selectedScorer = scorerPrompt();
-   // selected scorer calculates score for input word
    const result = selectedScorer(word);
-
-   // template literal output numeric score to console
-   console.log(`Total Score: ${result}`);// Print totalScore
-
-   // return result
+   console.log(`Total Score: ${result}`);
    return result;
+}
 
-};
+function validateWord(word) {
+   while (!isValidWord(word)) {
+      console.log('Invalid input! Please enter a word containing only letters.');
+      word = input.question("Let's play some scrabble! Enter a word: ");
+   }
+   return word;
+}
+
+function isValidWord(word) {
+   return /^[a-zA-Z]+$/.test(word); // Check if the word contains only letters
+}
+
+
+
+
+
+
 
 /*
 TASK 2: ADD AND ORGANIZE SCORING ALGORITHMS
@@ -251,12 +278,11 @@ function scorerPrompt() {
    }
    
    // Get the user's input and validate it
-   const validchoice = checkValidity(input.question('Enter 0, 1, or 2: ')); // call checkValidity parameter readline-sync prompt input (0, 1, or 2)
+   const validChoice = checkValidity(input.question('Enter 0, 1, or 2: ')); // call checkValidity parameter readline-sync prompt input (0, 1, or 2)
    // returns integer choice
 
    // Retrieve the selected scoring function
-   
-   const selectedScorer = retrieveAlgorithm(validchoice); // call retrieveAlgorithm() parameter validchoice
+   const selectedScorer = retrieveAlgorithm(validChoice); // call retrieveAlgorithm() parameter validchoice
    // returns selected scoringFunction
    
    // Return the selected scoring function
@@ -275,6 +301,7 @@ function checkValidity(input) {
       // Check is input valid
       if (isNaN(choice) || choice < 0 || choice >= scoringAlgorithms.length) {
          console.log('Invalid choice. Please enter 0, 1, or 2.');
+         break; // Exit the loop if choice is invalid
       }
    } while (isNaN(choice) || choice < 0 || choice >= scoringAlgorithms.length);
 
@@ -283,9 +310,9 @@ function checkValidity(input) {
 }
 
 // Function to retrieve the selected algorithm
-function retrieveAlgorithm(validchoice) {
+function retrieveAlgorithm(validChoice) {
    // Retrieve the selected scoring function based on user's validchoice
-   let scoringFunction = scoringAlgorithms[validchoice].scorerFunction;
+   const scoringFunction = scoringAlgorithms[validChoice].scorerFunction;
 
    return scoringFunction;
 }
